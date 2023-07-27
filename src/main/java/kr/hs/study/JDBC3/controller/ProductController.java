@@ -6,14 +6,25 @@ import kr.hs.study.JDBC3.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class ProductController {
     @Autowired
     private ProductService service;
+
+    @GetMapping("/")
+    public String list(Model model) {
+        List<ProductDTO> list = service.listAll();
+        model.addAttribute("list1", list);
+        return "list";
+    }
 
     @GetMapping("/add")
     public String add_form() {
@@ -27,6 +38,12 @@ public class ProductController {
         System.out.println("id: "+dto.getProduct_id());
         System.out.println("name: "+dto.getProduct_name());
         service.insert(dto);
-        return "result";
+        return "redirect:/";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") String id) {
+        service.del_Product(id);
+        return "redirect:/";
     }
 }

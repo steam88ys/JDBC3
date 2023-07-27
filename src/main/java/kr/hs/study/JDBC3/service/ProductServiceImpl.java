@@ -5,6 +5,8 @@ import kr.hs.study.JDBC3.dto.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductServiceImpl implements ProductService{
     @Autowired
@@ -13,5 +15,15 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public void insert(ProductDTO dto) {
         dao.insert(dto);
+    }
+
+    @Override
+    public List<ProductDTO> listAll() {
+        return dao.listAll();
+    }
+
+    @Override
+    public void del_Product(String id) {
+        dao.del_Product(id);
     }
 }
