@@ -46,4 +46,18 @@ public class ProductController {
         service.del_Product(id);
         return "redirect:/";
     }
+
+    @GetMapping("/update/{id}")
+    public String update_form(@PathVariable("id") String id, Model model) {
+        // select로 내용 가져오기
+        System.out.println(service.readOne(id));
+        ProductDTO dto = service.readOne(id);
+        model.addAttribute("dto", dto);
+        return "update_form";
+    }
+//
+//    @PostMapping("/update_form")
+//    public String update_done() {
+//        return "update_done";
+//    }
 }

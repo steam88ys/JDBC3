@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+<h1 th:text="'상품수정'">상품수정</h1>
+<form method="post" action="/update_done" th:object="${dto}">
+  상품아이디<input type="text" name="product_id" th:field="*{product_id}"><br>
+  상품명<input type="text" name="product_name" th:field="*{product_name}"><br>
+  <button type="submit">등록완료</button>
+</form>
+</body>
+</html>

@@ -31,4 +31,20 @@ public class ProductDAOImpl implements ProductDAO{
         String sql = "delete from product where product_id="+id;
         jdbc.update(sql);
     }
+
+    @Override
+    public ProductDTO readOne(String id) {
+        String sql = "select * from product where product_id="+id;
+        // sql의 결과를 productDTO클래스에 넣겠다
+        ProductDTO dto = jdbc.queryForObject(sql, new BeanPropertyRowMapper<>(ProductDTO.class));
+        return dto;
+    }
+
+    @Override
+    public void update_Product(String id) {
+        String sql = "update product "
+                    +"set "
+                    +"where product_id="+id;
+        jdbc.update(sql);
+    }
 }

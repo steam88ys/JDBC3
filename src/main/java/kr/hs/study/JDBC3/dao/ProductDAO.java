@@ -11,4 +11,7 @@ public interface ProductDAO {
     public List<ProductDTO> listAll();
 
     public void del_Product(String id);
+
+    public ProductDTO readOne(String id);
+    public void update_Product(String id);
 }

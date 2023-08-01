@@ -26,4 +26,9 @@ public class ProductServiceImpl implements ProductService{
     public void del_Product(String id) {
         dao.del_Product(id);
     }
+
+    @Override
+    public ProductDTO readOne(String id) {
+        return dao.readOne(id);
+    }
 }

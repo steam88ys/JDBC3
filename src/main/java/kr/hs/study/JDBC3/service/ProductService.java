@@ -12,4 +12,7 @@ public interface ProductService {
     public List<ProductDTO> listAll();
 
     public void del_Product(String id);
+
+    // 1개만 select하는 메서드
+    public ProductDTO readOne(String id);
 }
